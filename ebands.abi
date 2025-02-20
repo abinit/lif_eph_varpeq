@@ -1,0 +1,51 @@
+# LiF: non-SCF computation of the bandstructure
+
+# Files
+ getden_filepath "gso_DEN.nc"
+ iomode  3  # enable MPI I/O
+ prtpot  0  # print potential
+ prtwf   0  # disbale printing of the wavefunction
+ prtden  0  # disbale printing of the density
+
+# k-point path
+ kptopt -11
+ ndivsm 10
+ kptbounds
+    +0.00000  +0.00000  +0.00000  # $\Gamma$
+    +0.50000  +0.00000  +0.50000  # X
+    +0.50000  +0.25000  +0.75000  # W
+    +0.37500  +0.37500  +0.75000  # K
+    +0.00000  +0.00000  +0.00000  # $\Gamma$
+    +0.50000  +0.50000  +0.50000  # L
+    +0.62500  +0.25000  +0.62500  # U
+    +0.50000  +0.25000  +0.75000  # W
+    +0.50000  +0.50000  +0.50000  # L
+    +0.37500  +0.37500  +0.75000  # K
+    +0.62500  +0.25000  +0.62500  # U
+    +0.50000  +0.00000  +0.50000  # X
+
+# Basis set
+ ecut  30.0
+
+# non-SCF procedure
+ iscf   -2
+ tolwfr 1e-22
+
+# Number of bands
+ nband   6
+
+# Structure
+ natom   2
+ ntypat  2
+ typat   1 2
+ znucl   3 9
+ xred    0.0  0.0  0.0
+         0.5  0.5  0.5
+
+ acell  3*7.675
+ rprim  0.0  0.5  0.5
+        0.5  0.0  0.5
+        0.5  0.5  0.0
+
+# Pseudopotentials
+ pseudos  "Li.psp8, F.psp8"
