@@ -1,0 +1,37 @@
+# LiF: SCF computation of the groundstate density
+
+# Files
+ iomode  3  # enable MPI I/O
+ prtpot  1  # print potential
+ prteig  0  # disable printing of the eigenvalues file
+
+# k-point grid
+ ngkpt    3 3 3
+ nshiftk  1
+ shiftk   0.0  0.0  0.0
+
+# Basis set
+ ecut  30.0
+
+# SCF procedure
+ nstep   100
+ tolvrs  1e-18
+
+# Number of bands
+ nband   5
+
+# Structure
+ natom   2
+ ntypat  2
+ typat   1 2
+ znucl   3 9
+ xred    0.0  0.0  0.0
+         0.5  0.5  0.5
+
+ acell  3*7.675
+ rprim  0.0  0.5  0.5
+        0.5  0.0  0.5
+        0.5  0.5  0.0
+
+# Pseudopotentials
+ pseudos  "Li.psp8, F.psp8"

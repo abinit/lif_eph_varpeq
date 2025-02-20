@@ -1,0 +1,71 @@
+# LiF: computation of the phonon spectrum
+ ndtset  5
+
+# Files
+ getwfk_filepath  "gso_WFK.nc"
+
+ iomode  3  # enable MPI I/O
+ prtden  1  # print density
+ prtpot  1  # print potentials
+ prtwf   0  # disable printing of the wavefunction file
+ prteig  0  # disable printing of the wavefunction file
+
+
+# q-vectors for all datasets
+ nqpt   1
+ qpt1   0.00  0.00  0.00
+ # this correpsonds to the 3x3x3 Gamma-centred q-point grid
+ qpt2   0.00  0.00  0.00
+ qpt3    1/3  0.00  0.00
+ qpt4    1/3   1/3  0.00
+ qpt5   -1/3   1/3  0.00
+
+# DTSET 1: Response function calculation of d/dk wave function
+ iscf1   -3
+ kptopt1  2
+ rfelfd1  2
+ tolwfr1  1.0d-20
+ # cancel default
+ prtwf1   1
+ rfphon1  0
+
+# DTSET 2: Response function calculation of q=0 phonons and electric field perturbation.
+ getddk2  1
+ kptopt2  2
+ rfelfd2  3
+
+# Sets 3-5: Finite-wave-vector phonon calculations
+ kptopt   3
+ rfphon   1
+ tolvrs   1.0d-8
+
+##############################################
+# Common input variables
+##############################################
+
+# k-point grid
+ ngkpt    3 3 3
+ nshiftk  1
+ shiftk   0.0  0.0  0.0
+
+# Basis set
+ ecut  30.0
+
+# Number of bands
+ nband 5
+
+# Structure
+ natom   2
+ ntypat  2
+ typat   1 2
+ znucl   3 9
+ xred    0.0  0.0  0.0
+         0.5  0.5  0.5
+
+ acell  3*7.675
+ rprim  0.0  0.5  0.5
+        0.5  0.0  0.5
+        0.5  0.5  0.0
+
+# pseudopotentials
+ pseudos "Li.psp8, F.psp8"
