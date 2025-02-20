@@ -9,6 +9,6 @@ mpirun -n $nproc abinit dfpt.abi > dfpt.log 2> dfpt.err
 
 rm -f out_D*DB
 mrgddb out_DDB dfpt*DDB.nc
-mrgdv merge out_DVDB dfpt*POT*.nc
+#mrgdv merge out_DVDB dfpt*POT*.nc
 
 ./clean.sh
